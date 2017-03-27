@@ -68,12 +68,9 @@ cards, addresses, createOrder}) => {
               :''}
               <li>
                 <span>Método de pago</span>
-                {!cards.length ?
-                  <div><Link to="/payment" state={{ fromOrder: true }}>Agregar método de pago</Link></div>
-                :
                   <Select isLoading={loadingCardsList} options={cards} value={paymentMethod} clearable={false}
                   onChange={value => handlePaymentMethod(value.value)} searchable={false} placeholder="Selecciona método de pago" />
-                }
+                  <div style={{textAlign: 'right'}}><Link to="/payment" state={{ fromOrder: true }} >Agregar tarjeta crédito/débito</Link></div>
               </li>
               <li>
                 <span>Dirección de entrega</span>

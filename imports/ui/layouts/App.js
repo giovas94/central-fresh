@@ -108,18 +108,18 @@ export default class App extends Component {
         <Helmet
             htmlAttributes={{"lang": "es", "amp": undefined}} // amp takes no value
             title="Frutas y verduras a domicilio"
-            titleTemplate="Grontify.com - %s"
-            defaultTitle="Grontify"
+            titleTemplate="Central Fresh™ - %s"
+            defaultTitle="Central Fresh™"
             meta={[
-                {"name": "author", "content": "BERNAV Enterprises - Grontify Frutas y verduras de la central a tu hogar"},
-                {"name": "description", "content": "Frutas y verduras a precios de central de abastos a domicilio. De la central a tu hogar. Mandado express para todos"},
-                {"property": "og:title", "content": "Grontify Entrega de frutas y verduras a domicilio"},
+                {"name": "author", "content": "BERNAV Enterprises - Torque Studio"},
+                {"name": "description", "content": "Central Fresh™ - Frutas y verduras a domicilio. De la central a tu hogar"},
+                {"property": "og:title", "content": "Central Fresh™ - Frutas y verduras a domicilio. De la central a tu hogar"},
                 {"property": "og:type", "content": "website"},
                 {"property": "og:image", "content": "https://res.cloudinary.com/grontify/image/upload/v1476989047/logo/grontify-logo-HQ.png"},
-                {"property": "og:url", "content": "https://www.grontify.com"},
+                {"property": "og:url", "content": "https://www.entralfresh.mx"},
             ]}
             link={[
-              {"rel": "icon", "href": "https://res.cloudinary.com/grontify/image/upload/c_pad,h_32,w_32/v1477066907/mascot/grontify-mascot-HQ.png"}
+              {"rel": "icon", "href": "images/logo_square.png"}
             ]}
         />
 

@@ -27,10 +27,6 @@ img{
 }
 
 .container{
-  margin: 0 auto;
-  width: 90%;
-  max-width: 900px;
-
   p {
     color: #e0d5b1;
   }
@@ -123,38 +119,6 @@ img{
   p{
     font-size: 1.2rem;
     font-weight: 300;
-  }
-}
-.col{
-  margin: 0 1.5%;
-  display: inline-block;
-  vertical-align: top;
-}
-.col-7{
-  @extend .col;
-  width: 64%;
-
-  @media (max-width: $bp-s){
-    width: 100%;
-    margin: 0;
-  }
-}
-.col-3{
-  @extend .col;
-  width: 29%;
-
-  @media (max-width: $bp-s){
-    width: 100%;
-    margin: 0;
-  }
-}
-.col-5{
-  @extend .col;
-  width: 30%;
-
-  @media (max-width: $bp-xs){
-    width: 60%;
-    margin: 0;
   }
 }
 

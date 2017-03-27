@@ -40,6 +40,10 @@ export const createOrder = new ValidatedMethod({
     "products.$.unit": {
       type: String
     },
+    "products.$.notes": {
+      type: String,
+      optional: true
+    },
     shippingType: {
       type: String
     },
@@ -88,11 +92,13 @@ export const createOrder = new ValidatedMethod({
     let userOrders = Orders.find({ customerId: this.userId }).count();
 
     let secureProducts = _.map(products, function(product) {
-      const currentProduct = Products.findOne(product._id, { fields: { name: 1, currentPrice: 1, unit: 1 } });
+      if (product._id.toLowerCase() !== product.name.toLowerCase()) {
+        const currentProduct = Products.findOne(product._id, { fields: { name: 1, currentPrice: 1, unit: 1 } });
 
-      product.name = currentProduct.name;
-      product.currentPrice = currentProduct.currentPrice;
-      product.unit = currentProduct.unit;
+        product.name = currentProduct.name;
+        product.currentPrice = currentProduct.currentPrice;
+        product.unit = currentProduct.unit;
+      }
 
       return product;
     });
@@ -202,7 +208,7 @@ export const createOrder = new ValidatedMethod({
           \nTienes alguna duda, escríbenos a contacto@grontify.com o mándanos mensaje al whatsapp 55 3555-2173.
           \n\nSaludos, \n -Grontify frutas y verduras a domicilio.`
         });
-        
+
       }
 
       return future.wait();

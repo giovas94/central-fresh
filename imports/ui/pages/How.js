@@ -34,7 +34,7 @@ export class How extends Component {
           ]}
         />
 
-        <h1>¿Cómo funciona Grontify?</h1>
+        <center><h1>¿Cómo funciona Central Fresh?</h1></center>
 
         <section id="cd-timeline" className="cd-container">
       		<div className="cd-timeline-block">

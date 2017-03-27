@@ -11,6 +11,7 @@ import { NotFound } from '../../ui/pages/NotFound.js';
 import { How } from '../../ui/pages/How.js';
 import { ContactUs } from '../../ui/pages/ContactUs.js';
 import { ServiceArea } from '../../ui/pages/ServiceArea.js';
+import { Wholesale } from '../../ui/pages/Wholesale.js';
 import { Login } from '../../ui/pages/Login.js';
 import { RecoverPassword } from '../../ui/pages/RecoverPassword.js';
 import { ResetPassword } from '../../ui/pages/ResetPassword.js';
@@ -75,6 +76,7 @@ export const renderRoutes = () => (
       <Route name="how" path="how-works" component={How} />
       <Route name="contact" path="contact" component={ContactUs} />
       <Route name="service-area" path="service-area" component={ServiceArea} />
+      <Route name="servicios-especiales" path="servicios-especiales" component={Wholesale} />
       <Route name="market" path="market" component={MarketContainer} >
         <IndexRoute name="catalogue" component={CatalogueContainer} />
         <Route name="profile" path="/profile" component={ProfileContainer} onEnter={requireAuth} />

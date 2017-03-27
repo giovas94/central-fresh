@@ -232,7 +232,7 @@ export class Login extends Component {
           </div>
         </div>
         <div className="form">
-          <div className="thumbnail"><img src="https://res.cloudinary.com/grontify/image/upload/v1476989047/logo/grontify-logo-HQ.png"/></div>
+          <div><center><img className="img-responsive" tyle={{maxWidth: 200}} src="images/logo_square.png"/></center></div>
           <div>
             <a className="btn btn-block btn-social btn-facebook" onClick={this._loginFacebook.bind(this)}>
               <span className="fa fa-facebook"></span> Ingresa con facebook

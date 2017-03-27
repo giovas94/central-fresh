@@ -25,8 +25,9 @@ export class ServiceArea extends Component {
         <Row>
           <Col sm={12} md={12}>
             <br/>
-            <p>
-            Nuestro servicio de entrega de frutas y verduras a domicilio actualmente se brinda en la Ciudad de México, el Municipio de Huixquilucan y Naucalpan Estado de México.
+            <p style={{color: 'black'}}>
+            Nuestro servicio de entrega de frutas y verduras a domicilio actualmente se brinda en la Ciudad de México, el municipio de Huixquilucan y Naucalpan Estado de México.
+            <br/>
             <br/>
             Pronto cubriremos más zonas, mantente pendiente.
             </p>
