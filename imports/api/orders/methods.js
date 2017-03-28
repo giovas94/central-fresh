@@ -198,15 +198,15 @@ export const createOrder = new ValidatedMethod({
       if (future.wait().order_id) {
 
         Email.send({
-          from: "Grontify <contacto@grontify.com>",
+          from: "Central Fresh <contacto@centralfresh.mx>",
           to: handleUserEmails(Meteor.user()),
           bcc: 'grontify@gmail.com',
-          subject: `Grontify | Confirmación de pedido ${orderId}`,
+          subject: `Central Fresh | Confirmación de pedido ${orderId}`,
           text: `Tu mandado ha sido creado!
           \n\nEn breve recibirás un correo o whatsapp cuando tu pedido cambie de estatus a procesado.
           \nTambién puedes checar los detalles y estatus de tu pedido en ${Meteor.absoluteUrl('order/'+orderId, {secure: true})}
-          \nTienes alguna duda, escríbenos a contacto@grontify.com o mándanos mensaje al whatsapp 55 3555-2173.
-          \n\nSaludos, \n -Grontify frutas y verduras a domicilio.`
+          \nTienes alguna duda, escríbenos a contacto@centralfresh.mx o mándanos mensaje al whatsapp 55 3555-2173.
+          \n\nSaludos, \n -Central Fresh, frutas y verduras a domicilio.`
         });
 
       }
@@ -215,15 +215,15 @@ export const createOrder = new ValidatedMethod({
     } else {
 
       Email.send({
-        from: "Grontify <contacto@grontify.com>",
+        from: "Central Fresh <contacto@centralfresh.mx>",
         to: handleUserEmails(Meteor.user()),
         bcc: 'grontify@gmail.com',
-        subject: `Grontify | Confirmación de pedido ${orderId}`,
+        subject: `Central Fresh | Confirmación de pedido ${orderId}`,
         text: `Tu mandado ha sido creado!
         \n\nEn breve recibirás un correo o whatsapp cuando tu pedido cambie de estatus a procesado.
         \nTambién puedes checar los detalles y estatus de tu pedido en ${Meteor.absoluteUrl('order/'+orderId, {secure: true})}
-        \nTienes alguna duda, escríbenos a contacto@grontify.com o mándanos mensaje al whatsapp 55 3555-2173.
-        \n\nSaludos, \n -Grontify frutas y verduras a domicilio.`
+        \nTienes alguna duda, escríbenos a contacto@centralfresh.mx o mándanos mensaje al whatsapp 55 3555-2173.
+        \n\nSaludos, \n -Central Fresh, frutas y verduras a domicilio.`
       });
 
       return { orderId };
@@ -271,14 +271,14 @@ export const cancelOrder = new ValidatedMethod({
     Orders.update(orderId, { $set: { status: 'canceled' } });
 
     Email.send({
-      from: "Grontify <contacto@grontify.com>",
+      from: "Central Fresh <contacto@centralfresh.mx>",
       to: handleUserEmails(Meteor.user()),
       bcc: 'grontify@gmail.com',
       subject: `Grontify | Cancelación de pedido ${orderId}`,
       text: `Tu mandado ha sido cancelado.
       \nPuedes checar el estatus de tu pedido en ${Meteor.absoluteUrl('order/'+orderId, {secure: true})}
-      \nTienes alguna duda, escríbenos a contacto@grontify.com o mándanos mensaje al whatsapp 55 3555-2173.
-      \n\nSaludos, \n -Grontify frutas y verduras a domicilio.`
+      \nTienes alguna duda, escríbenos a contacto@centralfresh.mx o mándanos mensaje al whatsapp 55 3555-2173.
+      \n\nSaludos, \n -Central Fresh, frutas y verduras a domicilio.`
     });
   }
 });

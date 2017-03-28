@@ -54,6 +54,7 @@ export class AddressDetail extends Component {
     const {address} = this.props;
     return (
 
+      <div className="row">
       <form onSubmit={this.handleSubmit}>
         <Col xs={12}>
           <FormGroup>
@@ -112,11 +113,12 @@ export class AddressDetail extends Component {
         </Col>
 
         <Col xs={12} style={{textAlign: 'right'}}>
-          <Button onClick={() => browserHistory.goBack()}>Cancelar</Button>
+          <Button   onClick={() => browserHistory.goBack()}>Cancelar</Button>
           {' '}
-          <Button type="submit" bsStyle="primary">Guardar</Button>
+          <Button bsStyle="primary" type="submit">Guardar</Button>
         </Col>
       </form>
+      </div>
     )
   }
 }

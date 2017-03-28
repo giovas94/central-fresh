@@ -36,7 +36,7 @@ export const Footer = () => (
               </div>
             </Col>
             <Col lg={8} md={8} sm={8} xs={12} className="col1">
-              <div className="newsletter-wrap">
+              <div className="newsletter-wrap" style={{display: "none"}}>
                 <h4>Suscribete</h4>
                 <form action="#" method="post" id="newsletter-validate-detail1">
                   <div id="container_form_news">

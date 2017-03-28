@@ -10,7 +10,6 @@ html {
 #page {
 	position: relative;
 	left: 0;
-	
 }
 .mmPushBody {
 	width: 100%;
@@ -29,7 +28,7 @@ html {
 	display: none;
 	font-family:'Montserrat', sans-serif;
 	font-size: 13px;
-	
+
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	-o-box-sizing: content-box;
@@ -259,7 +258,7 @@ html {
 
  @media (max-width: 767px) {
 .mm-toggle {
-	display: block; 
+	display: block;
 }
 .mm-toggle h2 {
 font-size:14px;

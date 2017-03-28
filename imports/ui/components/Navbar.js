@@ -19,6 +19,12 @@ const handleLogout = () => {
   Meteor.logout(() => browserHistory.push('/'));
 };
 
+const handleMobile = () => {
+  $(".mm-toggle-wrap").on("click",function(){
+  });
+
+};
+
 export const Navbar = ({currentRoute, isLoginPage}) => (
   // <header className="cd-auto-hide-header">
   //   <div className="header-banner">
@@ -84,13 +90,21 @@ export const Navbar = ({currentRoute, isLoginPage}) => (
               <div className="fl-nav-menu">
                   <nav>
                       <div className="mm-toggle-wrap">
-                          <div className="mm-toggle">
+                          <div className="mm-toggle" onClick={handleMobile}>
                               <i className="icon-align-justify"></i><span className="mm-label">Menu</span>
+                          </div>
+                          <div className="nav-mobile">
+                            <ul className="{currentRoute[1].name === 'Inicio' ? 'nav-active' : ''}">
+                                <li><Link to="/" className="level-top"><span>Inicio</span></Link></li>
+                                <li><Link to="/market" activeClassName="nav-active" className="level-top"><span>Productos</span></Link></li>
+                                <li><Link to="/how-works" activeClassName="nav-active" className="level-top"><span>¿Cómo funciona?</span></Link></li>
+                                <li><Link to="/contact" activeClassName="nav-active" className="level-top"><span>Contacto</span></Link></li>
+                            </ul>
                           </div>
                       </div>
                       <div className="nav-inner">
-                          <ul id="nav" className="hidden-xs {currentRoute[1].name === 'Inicio' ? 'nav-active' : ''}">
-                              <li><Link to="/" className="level-top"><span>Inicio</span></Link></li>
+                          <ul id="nav" className="hidden-xs">
+                              <li><Link to="/"  className="level-top {currentRoute[1].name === 'Inicio' ? 'nav-active' : ''}"><span>Inicio</span></Link></li>
                               <li><Link to="/market" activeClassName="nav-active" className="level-top"><span>Productos</span></Link></li>
                               <li><Link to="/how-works" activeClassName="nav-active" className="level-top"><span>¿Cómo funciona?</span></Link></li>
                               <li><Link to="/contact" activeClassName="nav-active" className="level-top"><span>Contacto</span></Link></li>

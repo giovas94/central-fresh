@@ -5368,17 +5368,9 @@ position: absolute;
 
 .button, .btn, .button-inverse, .button-vote, .sidebar .button, .sidebar .btn, .dropdown .dropdown-menu .button, .buttons-set .back-link a, .scrolltop, .button-tabs li a {
 	font-family: 'Open Sans', sans-serif;
-	border: 1px #ddd solid;
-	background: #fff;
-	padding: 5px 12px;
 	transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
-.btn:hover, .btn:focus, .button-inverse, .button-vote:hover, .sidebar .button:hover, .sidebar .button:focus, .sidebar .btn:hover, .sidebar .btn:focus, .form-list .bootstrap-select.btn-group .btn:hover .caret, .form-list .bootstrap-select.btn-group .btn:focus .caret, .buttons-set .back-link a:hover, .buttons-set .back-link a:focus, .scrolltop, .button-tabs li a:hover, .button-tabs li a:focus {
-	border: 1px #333 solid;
-	background: #333;
-	padding: 5px 12px;
-	color: #FFF;
-}
+
 .button-checkout:before {
 	content: "\f00c";
 	font-family: FontAwesome;
@@ -10510,10 +10502,7 @@ button.button span span {
 	border: 2px #ddd solid;
 	text-transform: uppercase;
 }
-.button:hover, .button:focus, .btn:hover, .btn:focus, .button-inverse, .button-vote:hover, .sidebar .button:hover, .sidebar .button:focus, .sidebar .btn:hover, .sidebar .btn:focus, .form-list .bootstrap-select.btn-group .btn:hover .caret, .form-list .bootstrap-select.btn-group .btn:focus .caret, .buttons-set .back-link a:hover, .buttons-set .back-link a:focus, .scrolltop, .button-tabs li a:hover, .button-tabs li a:focus {
-	border: 2px #ed6663 solid;
-	color: #FFF;
-}
+
 .products-grid-home .link-wishlist:before {
 	content: "\f004";
 }
