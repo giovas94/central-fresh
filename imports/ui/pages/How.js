@@ -44,8 +44,8 @@ export class How extends Component {
 
       			<div className="cd-timeline-content">
       				<h2>Regístrate</h2>
-      				<p>Para comenzar a utilizar Grontify ingresa a <Link to="/login">login</Link>. El proceso es muy sencillo, ingresa tu nombre y apellidos, correo electónico y una contraseña. Una vez ingresado serás redireccionado al panel "Mi central" para que puedas comenzar a realizar tus mandados.</p><br/>
-              <img src="images/login.png" width="100%" alt="Grontify crear cuenta"/>
+      				<p>Para comenzar a utilizar Central Fresh ingresa a <Link to="/login">login</Link>. El proceso es muy sencillo, ingresa tu nombre y apellidos, correo electónico y una contraseña. Una vez ingresado serás redireccionado al panel "Mi central" para que puedas comenzar a realizar tus mandados.</p><br/>
+              <img src="images/login.png" width="100%" alt="Central Fresh crear cuenta"/>
       			</div>
       		</div>
 
@@ -58,7 +58,7 @@ export class How extends Component {
       				<h2>Panel "Mi Central" y buscar productos</h2>
       				<p>Después de hacer login ingresarás al panel 'Mi Central', en el podrás hacer tus mandados, ver y editar tu perfil, datos de pago, direcciones de entrega, historial de mandados y solicitar soporte en la sección de ayuda.<br/>
               En la sección hacer el mandado, busca productos y elige la cantidad deseada.</p>
-              <img src="images/catalog.png" width="100%" alt="Grontify mi central"/>
+              <img src="images/catalog.png" width="100%" alt="Central Fresh mi central"/>
       			</div>
       		</div>
 
@@ -69,7 +69,7 @@ export class How extends Component {
 
       			<div className="cd-timeline-content">
       				<h2>Checa tu canasta de productos</h2>
-              <img src="images/cart.png" width="70%" alt="Grontify cesta"/>
+              <img src="images/cart.png" width="70%" alt="Central Fresh cesta"/>
       				<p>En la parte inferior derecha del catálogo de productos en la sección "Hacer el mandado" encontrarás la cesta de productos, presiona para abrir. Verifica los productos y cantidades seleccionadas.</p>
       			</div>
       		</div>
