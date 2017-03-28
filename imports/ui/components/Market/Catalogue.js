@@ -325,6 +325,13 @@ export class Catalogue extends Component {
           addresses={!this.props.currentUser ? [] : this.props.currentUser.profile.addresses}
           createOrder={this._createOrder.bind(this)}/>
 
+          <div id="cd-cart-trigger" className="fixed-br">
+              <div className="mini-cart" >
+                  <div className="basket"> <a href="#"><span>{this.state.currentOrder.length}</span></a> </div>
+                  <div className="cart-total"><span>{accounting.formatMoney(this.state.currentOrderSubtotal)}</span></div>
+              </div>
+          </div>
+
         <h2>Catálogo</h2>
         <Row>
           <Col sm={12} md={6}>
@@ -404,7 +411,7 @@ export class Catalogue extends Component {
                 </div>
               </div>
 
-              <div className="custom-slider">
+              <div className="custom-slider" style={{display: "none"}}>
                 <div>
                   <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
                     <ol className="carousel-indicators">
@@ -435,6 +442,7 @@ export class Catalogue extends Component {
                     <a className="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span className="sr-only">Previous</span> </a> <a className="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span className="sr-only">Next</span> </a></div>
                 </div>
               </div>
+
             </aside>
 
           </Row>

@@ -28,10 +28,29 @@
 @import '../../../node_modules/loaders.css/src/animations/ball-scale-multiple.scss';
 @import '../../../node_modules/loaders.css/src/animations/ball-pulse.scss';
 
+
 .nav-active{
 	background-color: #497D10;
 }
 
-.products img{
-	max-width: 160px;
+.fixed-br{
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  z-index: 1000;
+}
+
+#cd-cart{
+  z-index: 2000;
+}
+
+.cart-total{
+  position: absolute;
+  color: white;
+  bottom: 5px;
+  left: 15px;
+
+  @media (max-width: 760px) {
+      display: none;
+  }
 }

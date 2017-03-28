@@ -87,11 +87,11 @@ export class ContactUs extends Component {
             <h4>Nuestras Oficinas</h4>
             <p>Paseo de la Reforma No. 296 Piso 42 Col. Juárez Del. Cuauhtémoc CP. 06600 <br/>México, México</p>
             <h4>Teléfono</h4>
-            <p>(55) 5264 8901</p>
+            <p>55 3119 0224</p>
             <h4><i className="fa fa-whatsapp"></i> Whatsapp</h4>
-            <p>55 3555 2173</p>
+            <p>55 3119 0224</p>
             <h4>Email</h4>
-            <p>contacto@grontify.com</p>
+            <p>contacto@centralfresh.mx</p>
           </Col>
         </Row>
 

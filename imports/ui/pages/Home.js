@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Link, browserHistory } from 'react-router';
+import {Row, Col, Grid} from 'react-bootstrap';
+
 
 let showAreaAlert = new ReactiveVar(true);
 
@@ -27,6 +29,12 @@ export class Home extends Component {
                 {"name": "description", "content": "Frutas y verduras a domicilio. De la central a tu hogar"}
             ]}
         />
+
+        <Grid fluid="true" style={{padding: 0}}>
+          <section>
+            <img className="img-responsive" src="images/slider/slide1.jpg"/>
+          </section>
+        </Grid>
 
         <div className="our-features-box wow bounceInUp animated animated">
           <div className="container">
@@ -58,7 +66,11 @@ export class Home extends Component {
             </ul>
           </div>
         </div>
+
+
+
       </div>
+
       // <div>
       //   <Helmet
       //       title="Homepage"

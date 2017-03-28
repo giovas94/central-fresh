@@ -60,7 +60,7 @@ export const Footer = () => (
                 <Link to="/home"><img  style={{maxWidth: 200}} src="images/logo_square.png" alt="footer logo"/></Link>
               </div>
               <address>
-                <div><em className="icon-location-arrow"></em> <span> ------------ </span></div>
+                <div><em className="icon-location-arrow"></em> <span> Paseo de la Reforma No. 296 Piso 42 Col. Juárez Del. Cuauhtémoc CP. 06600 <br/>Ciudad de México, México </span></div>
                 <div> <em className="icon-mobile-phone"></em><span> 55-3119-0224</span></div>
                 <div> <em className="icon-envelope"></em><span>contacto@centralfresh.com</span></div>
               </address>
@@ -77,10 +77,9 @@ export const Footer = () => (
             <div className="footer-column">
               <h4>Información</h4>
               <ul className="links">
-                <li className="first"><a title="FAQs" href="#">¿Cómo funciona?</a></li>
-                <li><a title="Return policy" href="#">Contacto</a></li>
-                <li><a title="Return policy" href="#">Términos y condiciones</a></li>
-                <li className="last"><a title="Return policy" href="#">Contacto</a></li>
+                <li className="first"><Link to="/how-works">¿Cómo funciona?</Link></li>
+                <li><Link to="/contact">Contacto</Link></li>
+                <li className="last"><a title="Return policy" href="#">Términos y condiciones</a></li>
               </ul>
             </div>
 

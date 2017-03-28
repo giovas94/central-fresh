@@ -120,26 +120,11 @@ export const Navbar = ({currentRoute, isLoginPage}) => (
                           </div>
                       </div>
                   </div>
-
-                  <div className="fl-cart-contain" style={{display: currentRoute[1].name === 'market' && currentRoute[2].name === 'catalogue' ? "": "none"}}>
-                      <div className="mini-cart" id="cd-cart-trigger">
-                          <div className="basket"> <a href="#"><span> 2 </span></a> </div>
-                          <div className="fl-mini-cart-content">
-                              <div className="block-subtitle">
-                                  <div className="top-subtotal">2 items, <span className="price">$259.99</span> </div>
-                              </div>
-                              <div className="actions">
-                                  <button className="btn-checkout" title="Checkout" type="button" onClick="window.location=checkout.html"><span>Checkout</span>
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
               </div>
           </div>
       </div>
   </div>
   </header>
+
 </div>
 )
