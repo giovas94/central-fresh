@@ -91,7 +91,6 @@ export class Catalogue extends Component {
     	//open cart
     	$cart_trigger.on('click', function(event){
     		event.preventDefault();
-
         //close lateral menu (if it's open)
     		this.toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
     	}.bind(this));
@@ -314,8 +313,8 @@ export class Catalogue extends Component {
     return (
       <div>
         <OrderSummary {...this.state}
-          fistOrderDiscount={this.state.currentOrderSubtotal >= 200 && this.props.ordersCount === 0 ? 150 : 0}
-          shippingDiscount={this.state.currentOrderSubtotal >= 550 && this.state.shippingTypeName !== 'Express' ? this.state.shippingTypeName === 'Estándar' ? 60 : 36 : 0 }
+          fistOrderDiscount={this.state.currentOrderSubtotal >= 200 && this.props.ordersCount === 0 ? this.state.currentOrderSubtotal*0.20 : 0}
+          shippingDiscount={this.state.currentOrderSubtotal >= 650 && this.state.shippingTypeName !== 'Express' ? this.state.shippingTypeName === 'Estándar' ? 60 : 36 : 0 }
           handleShippingType={this._handleShippingType.bind(this)}
           handleShippingAddress={this._handleShippingAddress.bind(this)}
           removeOrderProduct={this._removeOrderProduct.bind(this)}
@@ -458,7 +457,7 @@ export class Catalogue extends Component {
             <h4>Frutas o verduras que no están en el catálogo</h4>
             <p>Agrega la fruta o verdura que quieres y no encontraste en el catálogo</p>
 
-            <hr />
+            <hr/>
 
             <Row>
               <NoProduct

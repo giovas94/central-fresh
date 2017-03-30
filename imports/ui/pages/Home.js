@@ -42,7 +42,7 @@ export class Home extends Component {
               <li>
                 <div className="feature-box free-shipping">
                   <div className="icon-truck"></div>
-                  <div className="content">Entregas GRATIS en ordenes mayores a MXN $550</div>
+                  <div className="content">Entregas GRATIS en ordenes mayores a MXN $650</div>
                 </div>
               </li>
               <li>
@@ -60,7 +60,7 @@ export class Home extends Component {
               <li className="last">
                 <div className="feature-box first-discount last">
                   <div className="icon-coupon"></div>
-                  <div className="content">Recibe 20% de descuento en tu primer orden</div>
+                  <div className="content">Recibe 20% de descuento en tu primer orden mayor a $200</div>
                 </div>
               </li>
             </ul>

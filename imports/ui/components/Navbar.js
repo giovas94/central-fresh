@@ -76,7 +76,7 @@ export const Navbar = ({currentRoute, isLoginPage}) => (
   <div className="header-banner">
    <div className="assetBlock">
      <div style={{height: 20, overflow: "hidden"}} id="slideshow">
-       <p style={{display: "block"}}>Recibe <span>20%</span> de descuento en tu primer orden</p>
+       <p style={{display: "block"}}>Recibe <span>20%</span> de descuento en tu primer orden mayor a $200</p>
      </div>
     </div>
   </div>

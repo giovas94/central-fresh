@@ -28,7 +28,7 @@ cards, addresses, createOrder}) => {
   return (
     <div>
       <div id="cd-cart">
-        <h2>Mi mandado</h2>
+        <h2>Mi pedido</h2>
         {!currentOrder.length ?
           <p>No hay productos</p>
         :
@@ -42,14 +42,24 @@ cards, addresses, createOrder}) => {
             ))}
             {!Meteor.userId() ?
               <li>
-                <Link to="/login">Inicia sesión o regístrate para hacer tu mandado.</Link>
+                <Link to="/login">Inicia sesión o regístrate para hacer tu pedido.</Link>
               </li>
             :
             <div>
               <li>
-                <span>Tipo de envío <em style={{fontSize: 'small'}}>{shippingTypeName === 'Programado' ? 'Programa tu mandado'
-                : shippingTypeName === 'Express' ? moment().get('h') < 19 ? 'Recibe en 1hr o menos' : 'Recibe mañana antes de las 10:00hrs'
-                : shippingTypeName === 'Estándar' ? moment().get('h') < 16 ? 'Recibe hoy antes de las 20:00hrs' : 'Recibe mañana antes de las 14:00hrs' : '' }</em></span>
+                <span>Tipo de envío <em style={{fontSize: 'small'}}>
+                {shippingTypeName === 'Programado' ? 'Programa tu pedido'
+                  : shippingTypeName === 'Express' ? moment().get('h') < 19 ? 'Recibe en 1hr o menos' : 'Recibe mañana antes de las 10:00hrs'
+                  : shippingTypeName === 'Estándar' ? moment().get('h') < 16 ? 'Recibe hoy antes de las 20:00hrs' : 'Recibe mañana antes de las 14:00hrs' : ''
+                }
+                //
+                // switch(shippingTypeName){
+                //   case "Programado":
+                //     {"Programa tu pedido"}
+                //     break;
+                // }
+
+                </em></span>
                 <Select options={renderShippingTypes()} value={shippingType} clearable={false} placeholder="Selecciona el tipo de envío"
                 onChange={value => handleShippingType(value.value)}  searchable={false} />
 
@@ -91,8 +101,8 @@ cards, addresses, createOrder}) => {
 
         <div className="cd-cart-total">
           <p>Importe <span>{accounting.formatMoney(currentOrderSubtotal)}</span></p>
-          <p>Descuento <span>{accounting.formatMoney(fistOrderDiscount + shippingDiscount)}</span></p>
           <p>Envío <span>{accounting.formatMoney(shippingCost)}</span></p>
+          <p>Descuento <span>{accounting.formatMoney(fistOrderDiscount + shippingDiscount)}</span></p>
           <p><b>Total</b> <span><b>{accounting.formatMoney(currentOrderSubtotal + shippingCost - (fistOrderDiscount + shippingDiscount))}</b></span></p>
         </div>
 
