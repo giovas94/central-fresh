@@ -68,7 +68,7 @@ export const Product = ({product, currentOrder, handleProduct, handleCurrentOrde
                       <div className="item-price">
                         <div className="price-box"><span className="regular-price" id="product-price-1"><span className="price">{accounting.formatMoney(product.currentPrice)}</span> <small>por <b>{product.unit}</b></small></span> </div>
                       </div>
-                            <NumericInput min={0} max={20} step={product.unit === 'domo' || product.unit === 'pieza' || product.unit === 'manojo' ? 1 : .5} precision={1} mobile readOnly
+                            <NumericInput mobile={true} min={0} max={20} step={product.unit === 'domo' || product.unit === 'pieza' || product.unit === 'manojo' ? 1 : .5} precision={1} mobile readOnly
                               value={_.find(currentOrder, ['name', product.name]) ? _.find(currentOrder, ['name', product.name]).qty : 0}
                               onChange={valueAsNumber => {handleProduct(valueAsNumber, product); handleCurrentOrderSubtotal()}}
                               className="numericInput"

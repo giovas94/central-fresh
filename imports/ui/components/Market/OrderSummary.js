@@ -25,6 +25,36 @@ cards, addresses, createOrder}) => {
     return newArray;
   }
 
+  function renderShippingMessage(type){
+
+    // {shippingTypeName === 'Programado' ? 'Programa tu pedido'
+    //   : shippingTypeName === 'Express' ? moment().get('h') < 19 ? 'Recibe en 1hr o menos' : 'Recibe mañana antes de las 10:00hrs'
+    //   : shippingTypeName === 'Estándar' ? moment().get('h') < 16 ? 'Recibe hoy antes de las 20:00hrs' : 'Recibe mañana antes de las 14:00hrs' : ''
+    // }
+
+    let msg="";
+
+    switch (type) {
+      case "Programado":
+            msg="Programa tu pedido";
+          break;
+      case "Express":
+            if(moment().get('h') < 19)
+              msg="Recibe en 1hr o menos";
+            else
+              msg="Recibe mañana antes de las 10:00hrs";
+          break;
+      case "Estándar":
+            if(moment().get('h') >= 0 && moment().get('h') <20)
+              msg="Recibe mañana antes de las 14:00hrs";
+            else
+              msg="Recibe pasado mañana antes de las 14:00hrs";
+          break;
+    }
+
+    return msg;
+  }
+
   return (
     <div>
       <div id="cd-cart">
@@ -47,22 +77,9 @@ cards, addresses, createOrder}) => {
             :
             <div>
               <li>
-                <span>Tipo de envío <em style={{fontSize: 'small'}}>
-                {shippingTypeName === 'Programado' ? 'Programa tu pedido'
-                  : shippingTypeName === 'Express' ? moment().get('h') < 19 ? 'Recibe en 1hr o menos' : 'Recibe mañana antes de las 10:00hrs'
-                  : shippingTypeName === 'Estándar' ? moment().get('h') < 16 ? 'Recibe hoy antes de las 20:00hrs' : 'Recibe mañana antes de las 14:00hrs' : ''
-                }
-                //
-                // switch(shippingTypeName){
-                //   case "Programado":
-                //     {"Programa tu pedido"}
-                //     break;
-                // }
-
-                </em></span>
+                <span>Tipo de envío - <em style={{fontSize: 'small'}}>{renderShippingMessage(shippingTypeName)}</em></span>
                 <Select options={renderShippingTypes()} value={shippingType} clearable={false} placeholder="Selecciona el tipo de envío"
                 onChange={value => handleShippingType(value.value)}  searchable={false} />
-
               </li>
               {shippingTypeName === 'Programado' ?
               <li>
