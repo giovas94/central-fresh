@@ -19,7 +19,7 @@ export class CreditCard extends Component {
     const expiration = Meteor.Device.isDesktop() ? refs.expiration.value.split('/') : '';
     const expiration_month = Meteor.Device.isDesktop() ? parseInt(expiration[0], 10) : parseInt(refs.expiration_month.value);
     const expiration_year = Meteor.Device.isDesktop() ? parseInt(expiration[1], 10) : parseInt(refs.expiration_year.value);
-    const cvv2 = parseInt(refs.cvc.value);
+    const cvv2 = refs.cvc.value;
     const card = { holder_name, card_number, expiration_month, expiration_year, cvv2 };
 
     //Create new card

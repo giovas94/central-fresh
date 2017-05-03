@@ -5,6 +5,8 @@ import { browserHistory } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
 import moment from 'moment';
 
+import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+
 import 'moment/locale/es.js';
 moment.locale('es');
 
@@ -15,8 +17,8 @@ import {Loader} from 'react-loaders';
 // var shippingTypeArr = [{value: 'express', label:'Express'}, {value: 'estandar', label:'Estándar'}, {value: 'programado', label:'Programado'}];
 
 export const OrderSummary = ({currentOrder, shippingType, shippingTypeName, shippingDate, currentOrderSubtotal,
-shippingCost, shippingAddress, paymentMethod, creatingOrder, fistOrderDiscount, shippingDiscount, handleShippingType, handleShippingAddress,
-removeOrderProduct, handleShippingDate, handleCardList, shippingTypes, handlePaymentMethod, loadingCardsList,
+shippingCost, shippingAddress, paymentMethod, currentOrderComments, creatingOrder, fistOrderDiscount, shippingDiscount, handleShippingType, handleShippingAddress,
+removeOrderProduct, handleShippingDate, handleCardList, handleOrderComments, shippingTypes, handlePaymentMethod, loadingCardsList,
 cards, addresses, createOrder}) => {
 
   function renderShippingTypes() {
@@ -45,7 +47,7 @@ cards, addresses, createOrder}) => {
               msg="Recibe mañana antes de las 10:00hrs";
           break;
       case "Estándar":
-            if(moment().get('h') >= 0 && moment().get('h') <20)
+            if(moment().get('h') >= 0 && moment().get('h') < 19)
               msg="Recibe mañana antes de las 14:00hrs";
             else
               msg="Recibe pasado mañana antes de las 14:00hrs";
@@ -65,8 +67,8 @@ cards, addresses, createOrder}) => {
           <ul className="cd-cart-items">
             {currentOrder.map(product => (
             <li key={product._id}>
-              <span className="cd-qty">{_.isNaN(product.qty) ? '0' : product.qty} {product.qty < 1 || product.qty > 1 ? product.unit + 's' : product.unit} - </span> {product.name}
-              <div className="cd-price">${product.qty * product.currentPrice}</div>
+              <span className="cd-qty">{_.isNaN(product.qty) ? '0' : parseFloat(product.qty).toFixed(2)} {product.qty < 1 || product.qty > 1 ? product.unit + 's' : product.unit} - </span> {product.name}
+              <div className="cd-price">{accounting.formatMoney(product.qty * product.currentPrice)}</div>
               <a href="#0" className="cd-item-remove cd-img-replace" onClick={() => removeOrderProduct(product)}>Remove</a>
             </li>
             ))}
@@ -83,14 +85,14 @@ cards, addresses, createOrder}) => {
               </li>
               {shippingTypeName === 'Programado' ?
               <li>
-                <span>Elige fecha de entrega</span>
+                <span>Elige fecha de entrega</span>&nbsp;
                 <DatePicker
                   dateFormat="DD/MM/YYYY" selected={shippingDate}
                   onChange={date => handleShippingDate(date)}
                   className="form-control"
-                  minDate={moment().add(1, 'd')}
+                  minDate={moment().add(2, 'd')}
                 />
-                &nbsp;<em style={{fontSize: 'small'}}>Antes de las 17:00hrs</em>
+                &nbsp;<em style={{fontSize: 'small'}}>Antes de las 14:00hrs</em>
               </li>
               :''}
               <li>
@@ -110,6 +112,12 @@ cards, addresses, createOrder}) => {
                     return address;
                   })} value={shippingAddress} clearable={false} searchable={false} onChange={value => handleShippingAddress(value.value)} placeholder="Selecciona dirección de entrega" />
                 }
+              </li>
+              <li>
+              <FormGroup controlId="formControlsTextarea">
+                <ControlLabel>Comentarios a tu pedido</ControlLabel>
+                <FormControl componentClass="textarea" placeholder="Agrega comentarios a tu pedido (opcional)" value={currentOrderComments} onChange={e => handleOrderComments(e.target.value)} />
+              </FormGroup>
               </li>
             </div>
             }

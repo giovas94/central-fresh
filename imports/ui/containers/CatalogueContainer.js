@@ -8,11 +8,18 @@ import { Catalogue } from '../components/Market/Catalogue.js';
 const device_session_id = OpenPay.deviceData.setup();
 
 let searchQuery = new ReactiveVar("");
+let filterQuery = new ReactiveVar("");
 
-export default createContainer(({params}) => {
+export default createContainer(({params, location}) => {
+
+  if (location.query && location.query['category']) {
+    filterQuery.set(location.query['category'])
+  } else {
+    filterQuery.set('')
+  }
 
   const subscriptionOrdersCount = Meteor.subscribe('ordersCount');
-  const subscription = Meteor.subscribe('catalogue', searchQuery.get());
+  const subscription = Meteor.subscribe('catalogue', searchQuery.get(), filterQuery.get());
   const subscriptionShippingTypes = Meteor.subscribe('shippingTypes');
   const loading = !subscription.ready() && !subscriptionOrdersCount.ready() && !subscriptionShippingTypes.ready();
   const currentUser = Meteor.user();
@@ -23,6 +30,7 @@ export default createContainer(({params}) => {
   return {
     loading,
     searchQuery,
+    filterQuery,
     catalogue,
     ordersCount,
     shippingTypes,

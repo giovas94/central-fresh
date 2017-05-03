@@ -112,11 +112,11 @@ export default class App extends Component {
             defaultTitle="Central Fresh™"
             meta={[
                 {"name": "author", "content": "BERNAV Enterprises - Torque Studio"},
-                {"name": "description", "content": "Central Fresh™ - Frutas y verduras a domicilio. De la central a tu hogar"},
-                {"property": "og:title", "content": "Central Fresh™ - Frutas y verduras a domicilio. De la central a tu hogar"},
+                {"name": "description", "content": "Central Fresh™ - Frutas y verduras a domicilio."},
+                {"property": "og:title", "content": "Central Fresh™ - Frutas y verduras a domicilio."},
                 {"property": "og:type", "content": "website"},
-                {"property": "og:image", "content": "https://res.cloudinary.com/grontify/image/upload/v1476989047/logo/grontify-logo-HQ.png"},
-                {"property": "og:url", "content": "https://www.entralfresh.mx"},
+                {"property": "og:image", "content": "images/logo_square.png"},
+                {"property": "og:url", "content": "https://www.centralfresh.mx"},
             ]}
             link={[
               {"rel": "icon", "href": "images/logo_square.png"}
@@ -124,16 +124,14 @@ export default class App extends Component {
         />
 
         {/* <!-- Page Head--> */}
-        <Navbar currentRoute={this.props.routes} isLoginPage={this.props.location.pathname === '/login'} />
+        <Navbar currentRoute={this.props.routes} isMarket={this.props.location.pathname === '/market'} isLoginPage={this.props.location.pathname === '/login'} />
 
         <main className={`cd-main-content ${this.props.routes[1].name === 'market' ? 'sub-nav' : ''}`}>
           {this.props.children}
         </main>
         <Alert stack={{limit: 3}} />
-        <br/><br/>
         {/* <!-- Page Footer--> */}
         <Footer />
-
       </div>
     );
   }

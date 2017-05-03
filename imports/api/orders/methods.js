@@ -70,13 +70,16 @@ export const createOrder = new ValidatedMethod({
     },
     device_session_id: {
       type: String
+    },
+    comments: {
+      type: String
     }
     // status: {
     //   type: String,
     //   allowedValues: ['created', 'processed', 'canceled', 'sent', 'delivered', 'paid', 'refunded']
     // }
   }).validator(),
-  run({products, shippingType, shippingAddress, shippingCost, shippingDate, subtotal, total, paymentMethod, device_session_id}) {
+  run({products, shippingType, shippingAddress, shippingCost, shippingDate, subtotal, total, paymentMethod, device_session_id, comments}) {
     var future = new Future();
     var cardFuture = new Future();
     let orderDiscount = 0, shippingDiscount = 0;
@@ -93,7 +96,7 @@ export const createOrder = new ValidatedMethod({
 
     let secureProducts = _.map(products, function(product) {
       if (product._id.toLowerCase() !== product.name.toLowerCase()) {
-        const currentProduct = Products.findOne(product._id, { fields: { name: 1, currentPrice: 1, unit: 1 } });
+        const currentProduct = Products.findOne(product._id, { fields: { name: 1, currentPrice: 1, unit: 1, grams: 1 } });
 
         product.name = currentProduct.name;
         product.currentPrice = currentProduct.currentPrice;
@@ -108,7 +111,7 @@ export const createOrder = new ValidatedMethod({
     }, { currentPrice: 0 }).currentPrice;
 
     if (userOrders === 0 && secureSubtotal >= 200) {
-      orderDiscount = 150;
+      orderDiscount = secureSubtotal*0.20;
     }
 
     let secureShippingType = ShippingTypes.findOne(shippingType, { name: 1, currentCost: 1 });
@@ -117,7 +120,7 @@ export const createOrder = new ValidatedMethod({
       throw new Meteor.Error('El tipo de envío no existe!');
     }
 
-    if (secureSubtotal >= 550 && secureShippingType.name !== 'Express') {
+    if (secureSubtotal >= 650 && secureShippingType.name !== 'Express') {
       // if (secureShippingType.name === 'Estándar') {
       //   shippingDiscount = 60
       // } else {
@@ -152,9 +155,9 @@ export const createOrder = new ValidatedMethod({
 
     console.log(moment().format("ZZ"));
     if (moment().format("ZZ") === "-0600") {
-      customShippingDate = secureShippingType.name === 'Express' ? moment().get('hours') < 19 ? moment(shippingDate).add(1, 'hours').toDate() : moment(shippingDate).add(1, 'days').hours(10).minutes(0).toDate() : secureShippingType.name === 'Estándar' ? moment().get('hours') < 16 ? moment(shippingDate).hours(20).minutes(0).toDate() : moment(shippingDate).add(1, 'days').hours(14).minutes(0).toDate() : moment(shippingDate).hours(16).minutes(0).toDate();
+      customShippingDate = secureShippingType.name === 'Express' ? moment().get('hours') < 19 ? moment(shippingDate).add(1, 'hours').toDate() : moment(shippingDate).add(1, 'days').hours(10).minutes(0).toDate() : secureShippingType.name === 'Estándar' ? moment().get('hours') < 18 ? moment(shippingDate).add(1, 'days').hours(13).minutes(0).toDate() : moment(shippingDate).add(2, 'days').hours(13).minutes(0).toDate() : moment(shippingDate).hours(13).minutes(0).toDate();
     } else if (moment().format("ZZ") === "+0000") {
-      customShippingDate = secureShippingType.name === 'Express' ? moment().utcOffset("-06:00").get('hours') < 19 ? moment(shippingDate).utcOffset("-06:00").add(1, 'hours').toDate() : moment(shippingDate).utcOffset("-06:00").add(1, 'days').hours(10).minutes(0).toDate() : secureShippingType.name === 'Estándar' ? moment().utcOffset("-06:00").get('hours') < 16 ? moment(shippingDate).utcOffset("-06:00").hours(20).minutes(0).toDate() : moment(shippingDate).utcOffset("-06:00").add(1, 'days').hours(14).minutes(0).toDate() : moment(shippingDate).utcOffset("-06:00").hours(16).minutes(0).toDate();
+      customShippingDate = secureShippingType.name === 'Express' ? moment().utcOffset("-06:00").get('hours') < 19 ? moment(shippingDate).utcOffset("-06:00").add(1, 'hours').toDate() : moment(shippingDate).utcOffset("-06:00").add(1, 'days').hours(10).minutes(0).toDate() : secureShippingType.name === 'Estándar' ? moment().utcOffset("-06:00").get('hours') < 18 ? moment(shippingDate).utcOffset("-06:00").add(1, 'days').hours(13).minutes(0).toDate() : moment(shippingDate).utcOffset("-06:00").add(2, 'days').hours(13).minutes(0).toDate() : moment(shippingDate).utcOffset("-06:00").hours(13).minutes(0).toDate();
     }
 
     let secureTotal = secureSubtotal + secureShippingType.currentCost - (orderDiscount + shippingDiscount);
@@ -172,7 +175,8 @@ export const createOrder = new ValidatedMethod({
       shippingDate: customShippingDate,
       secureSubtotal,
       total: secureTotal.toFixed(2),
-      usedCard
+      usedCard,
+      comments
     });
 
     var chargeRequest = {
@@ -205,7 +209,7 @@ export const createOrder = new ValidatedMethod({
           text: `Tu mandado ha sido creado!
           \n\nEn breve recibirás un correo o whatsapp cuando tu pedido cambie de estatus a procesado.
           \nTambién puedes checar los detalles y estatus de tu pedido en ${Meteor.absoluteUrl('order/'+orderId, {secure: true})}
-          \nTienes alguna duda, escríbenos a contacto@centralfresh.mx o mándanos mensaje al whatsapp 55 3555-2173.
+          \nTienes alguna duda, escríbenos a contacto@grontify.com o mándanos mensaje al whatsapp 55 3119 0224.
           \n\nSaludos, \n -Central Fresh, frutas y verduras a domicilio.`
         });
 
@@ -222,7 +226,7 @@ export const createOrder = new ValidatedMethod({
         text: `Tu mandado ha sido creado!
         \n\nEn breve recibirás un correo o whatsapp cuando tu pedido cambie de estatus a procesado.
         \nTambién puedes checar los detalles y estatus de tu pedido en ${Meteor.absoluteUrl('order/'+orderId, {secure: true})}
-        \nTienes alguna duda, escríbenos a contacto@centralfresh.mx o mándanos mensaje al whatsapp 55 3555-2173.
+        \nTienes alguna duda, escríbenos a contacto@grontify.com o mándanos mensaje al whatsapp 55 3119 0224.
         \n\nSaludos, \n -Central Fresh, frutas y verduras a domicilio.`
       });
 

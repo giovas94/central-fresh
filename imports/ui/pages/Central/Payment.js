@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
 import {Row, Col} from 'react-bootstrap';
 
-import Loader from 'react-loaders';
+import {Loader} from 'react-loaders';
 
 import { CreditCard } from '../../components/Market/Payment/CreditCard.js';
 import { List } from '../../components/Market/Payment/List.js';
@@ -158,25 +158,78 @@ export class Payment extends Component {
 
   render() {
     return (
-      <Row>
-        <Col sm={12} md={6}>
-          <h3>Agregar método de pago</h3>
-          <p style={{fontSize: 'small'}}>Ingresa los datos exactamente como aparecen en la tarjeta. <br/>Tu tarjeta y pagos son procesados de forma segura por <img src="img/logo_openpay.png" width="55px" alt="Openpay"/> </p>
-          {this.state.savingCard ?
-            <div>
-              <br/>
-              <Loader type="ball-pulse" active={true} />
-            </div>
-          :
-            <CreditCard newCard={this._newCard.bind(this)} />
-          }
-        </Col>
 
-        <Col sm={12} md={6}>
-          <h3>Mis tarjetas</h3>
-          <List loading={this.state.loadingCardsList} cards={this.state.cards} deleteCard={this._deleteCard.bind(this)}/>
-        </Col>
-      </Row>
+      <div className="page-wrapper">
+
+        <div className="catalogue hero-section" data-ix="show-navbar">
+          <div className="navbar w-nav" data-animation="over-right" data-collapse="medium" data-duration="400">
+            <div className="w-container">
+              <Link className="w-nav-brand" to="/"><img className="logo" height="90" src="images/central-fresh-logo-white.png" />
+              </Link>
+              <nav className="fixednavmenu nav-menu w-nav-menu" role="navigation">
+              <Link className="nav-link w-nav-link" to="/">Inicio</Link>
+              <Link className="nav-link w-nav-link" to="/profile">Perfil</Link>
+              <Link className="nav-link w-nav-link" to="/payment">Datos de pago</Link>
+              <Link className="nav-link w-nav-link" to="/address">Direcciones</Link>
+              <Link className="nav-link w-nav-link" to="/orders">Pedidos</Link>
+              {/* <Link className="nav-link w-nav-link" to="/market?category=frutas">Frutas</Link>
+              <Link className="nav-link w-nav-link" to="/market?category=verduras">Verduras</Link>
+              <Link className="nav-link w-nav-link" to="/contact">Contáctanos</Link> */}
+
+
+              {/* <Link className="nav-link w-nav-link" to="/login">Regístrate</Link>
+                <div className="w-dropdown" data-delay="0" data-hover="1">
+                  <div className="login-dropdown nav-link w-dropdown-toggle">
+                    <div>Tu cuenta</div>
+                    <div className="w-icon-dropdown-toggle"></div>
+                  </div>
+                  <nav className="logindropdownlist w-dropdown-list">
+                  <Link className="dropdownlink w-dropdown-link" to="/profile">Mi perfil</Link>
+                  <Link className="dropdownlink w-dropdown-link" to="/orders">Pedidos</Link>
+                  <Link className="dropdownlink w-dropdown-link" to="/payment">Datos de pago</Link>
+                  <Link className="dropdownlink w-dropdown-link" to="/address">Direcciones</Link>
+                  <a className="dropdownlink w-dropdown-link" href="#">Salir</a>
+                  </nav>
+                </div> */}
+              </nav>
+              <div className="menu-button-2 w-nav-button">
+                <div className="w-icon-nav-menu"></div>
+              </div>
+            </div>
+          </div>
+          <div className="w-container">
+            <h1 className="catalogueheading heading-4">Tarjetas guardadas</h1>
+          </div>
+        </div>
+        <div className="productssection">
+          <div className="contactcontainer w-container">
+
+            <Row>
+              <Col sm={12} md={6}>
+                <h3>Agregar método de pago</h3>
+                <p style={{fontSize: 'small'}}>Ingresa los datos exactamente como aparecen en la tarjeta. <br/>Tu tarjeta y pagos son procesados de forma segura por <img src="img/logo_openpay.png" width="55px" alt="Openpay"/> </p>
+                {this.state.savingCard ?
+                  <div>
+                    <br/>
+                    <Loader type="ball-pulse" active={true} />
+                  </div>
+                :
+                  <CreditCard newCard={this._newCard.bind(this)} />
+                }
+              </Col>
+
+              <Col sm={12} md={6}>
+                <h3>Mis tarjetas</h3>
+                <List loading={this.state.loadingCardsList} cards={this.state.cards} deleteCard={this._deleteCard.bind(this)}/>
+              </Col>
+            </Row>
+
+          </div>
+        </div>
+      </div>
+
+
+
     )
   }
 }

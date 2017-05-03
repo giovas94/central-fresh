@@ -10,7 +10,7 @@ $border: #e0e6ef;
 $light-text: #a5aebc;
 $green: #7dcf85;
 
-$shadow-layer-bg: rgba($color-1, .5);
+$shadow-layer-bg: rgba(136,190,76, .5);
 
 // fonts
 
@@ -52,7 +52,7 @@ $main-zindex: 1;
 
 	/* header height */
 	// padding-top: 50px;
-  padding-top: 120px;
+  padding-top: 20px;
 
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
@@ -141,7 +141,7 @@ $main-zindex: 1;
 
     p {
   		margin: .3rem;
-      font-size: 1.6rem;
+      font-size: 1rem;
       font-family: "PT Sans", sans-serif;
     }
 

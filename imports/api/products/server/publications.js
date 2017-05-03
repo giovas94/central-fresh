@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Products } from '../products';
 
-Meteor.publish('catalogue', function(searchQuery) {
+Meteor.publish('catalogue', function(searchQuery, filterQuery) {
   // if(!this.userId) {
   //   return this.ready();
   // }
@@ -12,6 +12,7 @@ Meteor.publish('catalogue', function(searchQuery) {
       name: {
         $regex: searchQuery, $options: 'i'
       },
+      category: {$regex: filterQuery, $options: 'i'},
       productStatus: {
         $nin: ['agotado', 'fuera-temporada']
       }
@@ -24,6 +25,8 @@ Meteor.publish('catalogue', function(searchQuery) {
         productStatus: 1,
         imageURL: 1,
         description: 1,
+        category: 1,
+        grams: 1,
       }
     }
   );

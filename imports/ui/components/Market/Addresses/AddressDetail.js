@@ -54,7 +54,7 @@ export class AddressDetail extends Component {
     const {address} = this.props;
     return (
 
-      <div className="row">
+      <Col>
       <form onSubmit={this.handleSubmit}>
         <Col xs={12}>
           <FormGroup>
@@ -101,7 +101,11 @@ export class AddressDetail extends Component {
         <Col xs={6} md={4}>
           <FormGroup>
             <ControlLabel>Estado</ControlLabel>
-            <FormControl type="text" ref="state" defaultValue={address.state} placeholder="Estado" />
+            <FormControl componentClass="select" ref="state" value={address.state} placeholder="select">
+              <option value="">selecciona</option>
+              <option value="cdmx">Ciudad de México</option>
+              <option value="edomex">Estado de México</option>
+            </FormControl>
           </FormGroup>
         </Col>
 
@@ -118,7 +122,7 @@ export class AddressDetail extends Component {
           <Button bsStyle="primary" type="submit">Guardar</Button>
         </Col>
       </form>
-      </div>
+      </Col>
     )
   }
 }

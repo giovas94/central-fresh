@@ -24,11 +24,16 @@
 
 // @import '{reywood:bootstrap3-sass}/bootstrap';
 
-//$primary-color: $color-1;
+$primary-color: #88be4c;
 @import '../../../node_modules/loaders.css/src/animations/ball-scale-multiple.scss';
 @import '../../../node_modules/loaders.css/src/animations/ball-pulse.scss';
 
 
+a:focus {
+  text-decoration: none;
+  color: #fff;
+}
+// <link rel="stylesheet" type="text/css" href="stylesheet/bootstrap.min.css">
 .nav-active{
 	background-color: #497D10;
 }
@@ -41,7 +46,7 @@
 }
 
 #cd-cart{
-  z-index: 2000;
+  z-index: 10000;
 }
 
 .cart-total{

@@ -1,5 +1,5 @@
 {
-  "name": "grontify",
+  "name": "central_fresh",
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json --port 3030"
@@ -32,6 +32,7 @@
     "react-router-sitemap": "^1.0.8",
     "react-s-alert": "^1.2.0",
     "react-select": "^1.0.0-rc.2",
+    "react-tap-event-plugin": "^2.0.1",
     "react-widgets": "^3.4.4"
   }
 }

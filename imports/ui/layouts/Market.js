@@ -13,16 +13,17 @@ export class Market extends React.Component {
 
   render() {
     return (
-      <div style={{paddingLeft: '5%', paddingRight: '5%'}}>
+      // <div style={{paddingLeft: '5%', paddingRight: '5%'}}>
+      <div>
         <Helmet
-            title="Mi Central"
+            title="Catálogo"
             meta={[
-                {"name": "description", "content": "Pide ahora tus frutas y verduras a domicilio. De la central a tu hogar."}
+                {"name": "description", "content": "Pide ahora tus frutas y verduras a domicilio."}
             ]}
         />
 
         {/* <CustomerMenu /> */}
-        <h1>Mi central</h1>
+        {/* <h1>Mi central</h1> */}
         {this.props.children && React.cloneElement(this.props.children, { currentOrder: this.state.currentOrder})}
       </div>
     )
